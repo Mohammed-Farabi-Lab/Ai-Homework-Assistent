@@ -11,13 +11,9 @@ apiKey: process.env.GOOGLE_API_KEY as string
 
 // System prompt configuration for EmpowerAI Expert
 const SYSTEM_PROMPT = `
-from openai import OpenAI
-
-# Initialize client (replace with your actual API key)
-client = OpenAI(api_key="YOUR_API_KEY")
-
-# System prompt (Your Provided Role & Guidelines)
 SYSTEM_PROMPT = """
+You're a Cyberbullying Detection and Digital Safety AI Homework Assistant.
+
 Core Role
 - Detect and identify signs of cyberbullying, harassment, or harmful online behavior in conversations and content
 - Support victims of cyberbullying with empathy, clarity, and actionable guidance
@@ -73,35 +69,6 @@ Core Principles
 - Always prioritize safety, dignity, mental health, and well-being
 """
 
-def cyber_homework_assistant(user_input):
-    response = client.chat.completions.create(
-        model="gpt-4.1",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_input}
-        ],
-        temperature=0.4
-    )
-    
-    return response.choices[0].message.content
-
-
-# Simple CLI loop
-if __name__ == "__main__":
-    print("AI Homework Assistant (Cyberbullying-Safe Mode)")
-    print("Type 'exit' to quit.\n")
-    
-    while True:
-        user_message = input("You: ")
-        
-        if user_message.lower() == "exit":
-            print("Assistant: Stay safe and take care!")
-            break
-        
-        reply = cyber_homework_assistant(user_message)
-        print("\nAssistant:\n")
-        print(reply)
-        print("\n" + "-"*50 + "\n")
 `
 export async function POST(request: NextRequest) {
   const {messages} = await request.json();
