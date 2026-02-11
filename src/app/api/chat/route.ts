@@ -12,6 +12,94 @@ apiKey: process.env.GOOGLE_API_KEY as string
 // System prompt configuration for EmpowerAI Expert
 const SYSTEM_PROMPT = `
 You are EmpowerAI, an intelligent cyberbullying detection, prevention, and support system designed to identify harmful online behavior and provide compassionate, practical assistance to individuals affected by cyberbullying.
+import random
+
+class HomeworkAssistant:
+    def __init__(self):
+        self.subjects = ['Math', 'Science', 'English', 'History']
+        self.welcome_message = (
+            "Hello! I'm your Homework Assistant. I can help you with various subjects such as Math, Science, English, and History.\n"
+            "How can I assist you today?"
+        )
+    
+    def display_welcome(self):
+        print(self.welcome_message)
+
+    def get_subject_help(self, subject):
+        """Provides help based on the subject chosen"""
+        if subject.lower() == 'math':
+            return self.provide_math_help()
+        elif subject.lower() == 'science':
+            return self.provide_science_help()
+        elif subject.lower() == 'english':
+            return self.provide_english_help()
+        elif subject.lower() == 'history':
+            return self.provide_history_help()
+        else:
+            return "Sorry, I don't have help available for that subject yet."
+    
+    def provide_math_help(self):
+        """Provide math-related homework assistance"""
+        problems = [
+            "Solve for x: 3x + 5 = 20",
+            "What is 5 * 8?",
+            "Simplify the expression: 2x + 3x - 7"
+        ]
+        selected_problem = random.choice(problems)
+        return f"Let's work on a math problem! Here's one: {selected_problem}\nHow would you like to approach it?"
+
+    def provide_science_help(self):
+        """Provide science-related homework assistance"""
+        topics = [
+            "What is the process of photosynthesis?",
+            "Explain Newton's laws of motion.",
+            "What is the chemical formula for water?"
+        ]
+        selected_topic = random.choice(topics)
+        return f"Here's a science question: {selected_topic}\nWould you like a brief explanation or a deeper dive?"
+
+    def provide_english_help(self):
+        """Provide English-related homework assistance"""
+        topics = [
+            "What is the difference between a simile and a metaphor?",
+            "Can you identify the subject and verb in this sentence: 'The cat sleeps peacefully'?",
+            "What is the past tense of 'go'?"
+        ]
+        selected_topic = random.choice(topics)
+        return f"Let's work on your English skills! Here's a question: {selected_topic}\nLet me know how you'd like to proceed."
+
+    def provide_history_help(self):
+        """Provide history-related homework assistance"""
+        topics = [
+            "Who was the first president of the United States?",
+            "What were the causes of World War I?",
+            "Describe the significance of the Magna Carta."
+        ]
+        selected_topic = random.choice(topics)
+        return f"Here's a history question: {selected_topic}\nWould you like a brief summary or more detailed explanation?"
+
+    def give_hint(self, subject):
+        """Provides hints and guidance based on the subject chosen"""
+        hints = {
+            'math': "Try isolating the variable (x) to one side of the equation.",
+            'science': "Remember, photosynthesis happens in plants when they absorb sunlight.",
+            'english': "Look for comparison words like 'like' or 'as' for similes.",
+            'history': "Think about the events leading up to the conflict and the alliances formed."
+        }
+        return hints.get(subject.lower(), "I don't have a hint for that subject, but I can explain it further if you'd like.")
+    
+    def provide_feedback(self, is_correct):
+        """Provides feedback based on whether the student's answer is correct"""
+        if is_correct:
+            return "Great job! You're on the right track. Keep up the good work!"
+        else:
+            return "That's okay! Let's go over it together. Remember, learning is a process."
+    
+    def encourage(self):
+        """Encourages and motivates students to keep going"""
+        encouragements = [
+            "You're doing great! Keep pushing forward, you've got this!",
+            "Ever
 
 
 Core Role
